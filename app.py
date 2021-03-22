@@ -1,14 +1,11 @@
 import praw
 
-reddit = praw.Reddit(
-    client_id="my client id"
-    client_secret="my client secret"
-    user_agent="my user agent"
-)
-print(reddit.read_only)
-# Output: True
+reddit = praw.Reddit('mob-firstbot')
 
-for submission in reddit.subreddit("learnpython").hot(limit=10):
-    print(submission.title)
+subreddit = reddit.subreddit("learnpython")
 
-# Output: 10 submissions
+for submission in subreddit.hot(limit=5):
+    print("Title: ", submission.title)
+    print("Text: ", submission.selftext)
+    print("Score: ", submission.score)
+    print("---------------------------------\n")
